@@ -62,8 +62,10 @@ const people = [
   "Biondo, Frank",
 ];
 
+// ______________________________________________________________________________________
 // Array.prototype.filter()_____________________________________________________
 // 1. Filter the list of inventors for those who were born in the 1500's
+
 // __________
 // Example:
 //  const ages = [32, 33, 16, 40];
@@ -72,14 +74,16 @@ const people = [
 // return variable >= 18;
 // }
 
-function filterDate(inventor) {
-  return inventor.year >= 1500 && inventor.year < 1600;
-}
+// function filterDate(inventor) {
+//   return inventor.year >= 1500 && inventor.year < 1600;
+// }
 
-let date = inventors.filter(filterDate);
+// let date = inventors.filter(filterDate);
 
-// Array.prototype.map()___________________________________________________________
+// ______________________________________________________________________________________
+// Array.prototype.map()
 // 2. Give us an array of the inventors first and last names
+
 // ___________
 // Example:
 // const numbers = [4, 9, 16, 25];
@@ -90,11 +94,11 @@ let date = inventors.filter(filterDate);
 // }
 // console.log(multiply);
 
-let fullName = inventors.map(filterName);
+// let fullName = inventors.map(filterName);
 
-function filterName(inventor) {
-  return inventor.first + " " + inventor.last;
-}
+// function filterName(inventor) {
+//   return inventor.first + " " + inventor.last;
+// }
 
 // function firstName(inventor) {
 //   return inventor.first;
@@ -103,31 +107,84 @@ function filterName(inventor) {
 //   return inventor.last;
 // }
 
-// Array.prototype.sort()_____________________________________________________________
+// ______________________________________________________________________________________
+// Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+
+// let orderedDates = inventors.sort(compare);
 // __________
 // Example
 // const points = [40, 100, 1, 5, 25, 10];
 // points.sort(function (a, b) {
 //   return b - a;
 // });
-
-let orderedDates = inventors.sort(compare);
-
-function compare(inventorA, inventorB) {
-  return inventorA.year - inventorB.year;
-}
-
-console.log(orderedDates);
-
+//
+// function compare(inventorA, inventorB) {
+// return inventorA.year - inventorB.year;
+// }
+//
+// ______________________________________________________________________________________
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live all together?
 
-// 5. Sort the inventors by years lived
+// // Example
+// const numbers = [100, 50, 10];
+// let total = numbers.reduce(add);
+// function add(total, num) {
+//   return total + num;
+// }
 
+let inventorAge = inventors.map((i) => i.passed - i.year);
+console.log(inventorAge);
+
+// // ___WHY THE RESULT IS ALWAYS 861????
+
+// function sumYears(total, inventor) {
+//   total += inventor.passed - inventor.year;
+//   return total;
+// }
+
+// let totalYears = inventors.reduce(sumYears, 0);
+
+// // // ______________________________________________________________________________________
+// // 5. Sort the inventors by years lived .sort()
+
+// // inventors Ages:  76, 84, 78, 67, 59, 70, 89, 81, 37, 50, 90, 80
+
+const oldest = inventorAge.sort(compareAge);
+
+function compareAge(inventorA, inventorB) {
+  return inventorA - inventorB;
+}
+console.log(oldest);
+
+// //  return only the ages
+// console.table(oldest);
+
+// return object
+
+const inventorOldest = inventors.sort(compare);
+function compare(inventorA, inventorB) {
+  return (
+    inventorA.passed - inventorA.year - (inventorB.passed - inventorB.year)
+  );
+}
+
+console.log(inventorOldest);
+
+// ___________________________________________________________________________________________
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+// put the code in this links console https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+let links = Array.from(document.querySelectorAll(".mw-category-group a"));
+
+let content = links.map((link) => link.textContent);
+
+let de = content.filter(filterDe);
+
+function filterDe(words) {
+  return (words = "de");
+}
 // 7. sort Exercise
 // Sort the people alphabetically by last name
 
