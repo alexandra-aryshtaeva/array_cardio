@@ -134,61 +134,66 @@ const people = [
 //   return total + num;
 // }
 
-let inventorAge = inventors.map((i) => i.passed - i.year);
-console.log(inventorAge);
+// let inventorAge = inventors.map((i) => i.passed - i.year);
+// console.log(inventorAge);
 
-// // ___WHY THE RESULT IS ALWAYS 861????
+// // // ___WHY THE RESULT IS ALWAYS 861????
 
-// function sumYears(total, inventor) {
-//   total += inventor.passed - inventor.year;
-//   return total;
+// // function sumYears(total, inventor) {
+// //   total += inventor.passed - inventor.year;
+// //   return total;
+// // }
+
+// // let totalYears = inventors.reduce(sumYears, 0);
+
+// // // // ______________________________________________________________________________________
+// // // 5. Sort the inventors by years lived .sort()
+
+// // // inventors Ages:  76, 84, 78, 67, 59, 70, 89, 81, 37, 50, 90, 80
+
+// const oldest = inventorAge.sort(compareAge);
+
+// function compareAge(inventorA, inventorB) {
+//   return inventorA - inventorB;
+// }
+// console.log(oldest);
+
+// // //  return only the ages
+// // console.table(oldest);
+
+// // return object
+
+// const inventorOldest = inventors.sort(compare);
+// function compare(inventorA, inventorB) {
+//   return (
+//     inventorA.passed - inventorA.year - (inventorB.passed - inventorB.year)
+//   );
 // }
 
-// let totalYears = inventors.reduce(sumYears, 0);
-
-// // // ______________________________________________________________________________________
-// // 5. Sort the inventors by years lived .sort()
-
-// // inventors Ages:  76, 84, 78, 67, 59, 70, 89, 81, 37, 50, 90, 80
-
-const oldest = inventorAge.sort(compareAge);
-
-function compareAge(inventorA, inventorB) {
-  return inventorA - inventorB;
-}
-console.log(oldest);
-
-// //  return only the ages
-// console.table(oldest);
-
-// return object
-
-const inventorOldest = inventors.sort(compare);
-function compare(inventorA, inventorB) {
-  return (
-    inventorA.passed - inventorA.year - (inventorB.passed - inventorB.year)
-  );
-}
-
-console.log(inventorOldest);
+// console.log(inventorOldest);
 
 // ___________________________________________________________________________________________
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // put the code in this links console https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-let links = Array.from(document.querySelectorAll(".mw-category-group a"));
+// let links = Array.from(document.querySelectorAll(".mw-category-group a"));
 
-let content = links.map((link) => link.textContent);
+// let content = links.map((link) => link.textContent);
 
-let de = content.filter(filterDe);
-
-function filterDe(words) {
-  return (words = "de");
-}
+// let de = content.filter((word) => word.toLowerCase().includes("de"));
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+// const sortedPeople = people.sort((lastOne, currentOne) => {
+//   const [aSurname, aFirstName] = lastOne.split(", ");
+//   const [bSurname, bFirstName] = currentOne.split(", ");
 
+//   return aSurname > bSurname ? 1 : -1;
+// });
+// console.log(sortedPeople);
+
+// ___________________________________________________________________
 // 8. Reduce Exercise
+
 // Sum up the instances of each of these
 const data = [
   "car",
@@ -206,3 +211,13 @@ const data = [
   "car",
   "truck",
 ];
+// const vehicles = data.reduce((obj, item) => {
+//   if (!obj[item]) {
+//     obj[item] = 0;
+//   }
+
+//   obj[item]++;
+
+//   return obj;
+// }, {});
+// console.log(vehicles);
