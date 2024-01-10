@@ -277,7 +277,6 @@ const vehicles = data.reduce((obj, item) => {
 }, {});
 console.log(vehicles);
 
-
 const dudes = [
   { name: "Kyle", age: 26 },
   { name: "John", age: 31 },
