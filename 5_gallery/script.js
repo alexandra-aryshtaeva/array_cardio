@@ -9,7 +9,8 @@ panels.forEach((panel) => {
 });
 
 function toggleActive(e) {
-  if (e.propertyName.includes("flex")) {
+  if (e.propertyName === "flex-grow") {
+    console.log(e.propertyName);
     this.classList.toggle("open-active");
   }
 }
