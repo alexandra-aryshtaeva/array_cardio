@@ -40,8 +40,12 @@ const findId = comments.find((comment) => {
   if (comment.id == "823423") return true;
 });
 
-console.log(findId);
 // _________________FIND INDEX_______________________________
 // Array.prototype.findIndex()
 // Find the comment with this ID
 // delete the comment with the ID of 823423
+
+const index = comments.findIndex((comment) => comment.id == "823423");
+
+let newArray = comments.splice(Number(index), 1);
+console.log(newArray);
